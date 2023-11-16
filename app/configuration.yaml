@@ -1,0 +1,43 @@
+configuration:
+  defaults:
+    globals:
+      assistantType: "RAGStack project"
+      vectorKeyspace: "chatbot"
+      vectorTable: "ptcdocs"
+      chatTable: "ptchistory"
+      vectorIndex: "annragstack"
+      chunksTopic: "ptc-chatbot-chunks"
+      questionsTopic: "ptc-chatbot-questions"
+      answersTopic: "ptc-chatbot-answers"
+      chatModelName: "gpt-3.5-turbo"
+      logTopic: "ptc-chatbot-logs"
+      seedUrls: 
+        - "https://ptc-computer.com.kh/"
+      allowedUrls: 
+        - "https://ptc-computer.com.kh/"
+      forbiddenPaths: []
+      vectorDb: ""
+  resources:
+  - type: "open-ai-configuration"
+    name: "OpenAI configuration"
+    configuration:
+      access-key: "${secrets.open-ai.access-key}"
+      provider: "openai"
+  - type: "datasource"
+    name: "AstraDatasource"
+    configuration:
+        service: "astra"
+        clientId: "${secrets.astra.clientId}"
+        secret: "${secrets.astra.secret}"
+        token: "${secrets.astra.token}"
+        database: "${secrets.astra.database}"
+        environment: "${secrets.astra.environment}"
+  - type: "vector-database"
+    name: "AstraVector"
+    configuration:
+        service: "astra"
+        clientId: "${secrets.astra.clientId}"
+        secret: "${secrets.astra.secret}"
+        token: "${secrets.astra.token}"
+        database: "${secrets.astra.database}"
+        environment: "${secrets.astra.environment}"

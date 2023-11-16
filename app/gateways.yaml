@@ -1,0 +1,28 @@
+gateways:
+  - id: "user-input"
+    type: produce
+    topic: "${globals.questionsTopic}"
+    parameters:
+      - sessionId
+    authentication:
+      provider: github
+      configuration:
+        clientId: "${secrets.github.client-id}"
+    produceOptions:
+      headers:
+        - key: sessionid
+          valueFromParameters: sessionId
+  - id: "bot-output"
+    type: consume
+    topic: "${globals.answersTopic}"
+    parameters:
+      - sessionId
+    authentication:
+      provider: github
+      configuration:
+        clientId: "${secrets.github.client-id}"
+    consumeOptions:
+      filters:
+        headers:
+          - key: sessionid
+            valueFromParameters: sessionId

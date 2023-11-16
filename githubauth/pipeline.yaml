@@ -1,0 +1,10 @@
+topics:
+  - name: "input-topic"
+    creation-mode: create-if-not-exists
+  - name: "output-topic"
+    creation-mode: create-if-not-exists
+pipeline:
+  - name: "echo"
+    type: "identity"
+    input: "input-topic"
+    output: "output-topic"

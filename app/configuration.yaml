@@ -12,9 +12,9 @@ configuration:
       chatModelName: "gpt-3.5-turbo"
       logTopic: "ptc-chatbot-logs"
       seedUrls: 
-        - "https://ptc-computer.com.kh/"
+        - "https://cassio.org/"
       allowedUrls: 
-        - "https://ptc-computer.com.kh/"
+        - "https://cassio.org/"
       forbiddenPaths: []
       vectorDb: ""
   resources:
